@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand site-name" ui-sref="home"><h1>SITE</h1></a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li ng-show="user.username"><a ui-sref="profile">{{ 'PROFILE' | translate }}</a></li>
+				<li ng-show="user.username"><a ui-sref="create-catalog">{{ 'CREATE_CATALOG' | translate }}</a></li>
+				<li ng-show="user.username"><a ui-sref="users">{{ 'USERS' | translate }}</a></li>
+				<li ng-show="user.username"><a ui-sref="catalogs">{{ 'CATALOGS' | translate }}</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+
+				<li ng-show="user.username"><a> <span class="user">{{ 'HI' | translate }},
+							{{user.name}}</span> <span ng-click="logout()" href=""
+						class="logout">{{ 'LOGOUT' | translate }}</span>
+				</a></li>
+				<li ng-show="!user.username"><a ui-sref="login">{{ 'LOGIN' | translate }}</a></li>
+				<li ng-show="!user.username"><a ui-sref="catalogs">{{ 'INSTRUCTIONS' | translate }}</a></li>
+				<li>
+					<div class = "margin-top-5" ng-controller="TranslateController">
+						<ul id="lng">
+							<li ng-class="{'selected' : currentLng('ru')}" ng-click="changeLng('ru')">РУ</li>
+							<li ng-class="{'selected' : currentLng('en')}" ng-click="changeLng('en')">EN</li>
+							<li ng-show="user.username"><div class="ui button aligned center teal" ng-controller="PDFController" ng-click="exportToPDF()" >PDF</div></li>
+						</ul>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</nav>

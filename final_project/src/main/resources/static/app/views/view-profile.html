@@ -1,0 +1,76 @@
+<div class="row" id="exportToPDFThis">
+    <div class="col-sm-14 ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Instructions
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="initAddUser()">
+                    <span class="glyphicon glyphicon-plus"></span> New Instruction
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-info margin-top-5" ng-show="deleteMessage">{{deleteMessage}}</div>
+
+                <div class="col-xs-12 col-sm-8">
+
+                    <h2>{{'USER' | translate}}: {{user.name}}</h2>
+                    <p><strong>{{'ADDRESS' | translate}}: </strong> {{user.userProfile.street}} </p>
+                    <p><strong>Reserve: </strong> {{user.userProfile.reserve}} </p>
+
+                    <h2>{{user.name}}</h2>
+                    <p><strong>Name: </strong> {{catalog.name}} </p>
+                    <p><strong>Id: </strong> {{catalog.id}} </p>
+                    <p><strong>Submitted: </strong> {{ catalog.creationDate | date:'medium'}} </p>
+                    <p><strong>Last edit date: </strong> {{ catalog.lastEditDate | date:'medium'}} </p>
+                    <p><strong>Create by: </strong> {{catalog.creatorName}} </p>
+                    <p><strong>Rating: </strong> {{catalog.rating}} </p>
+                    <h1>Instructions</h1>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Creator</th>
+                        <th>Number of comments</th>
+                        <th>Text</th>
+                        <th>Submit</th>
+                        <th>Last edit date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="catalog in user.catalog">
+                        <td>
+                            <a href="#/view-thread/{{catalog.id}}">{{catalog.name}}</a>
+                        </td>
+                        <td>{{catalog.creatorName}}</td>
+                        <td>{{catalog.instructionComments.length}}</td>
+                        <td>{{catalog.text}}</td>
+                        <td>{{ catalog.creationDate | date:'medium'}}</td>
+                        <td>{{ catalog.lastEditDate | date:'medium'}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <body>
+                <h1>Achievements</h1>
+                <div class="image-container">
+                    <div ng-repeat="achievement in user.achievements" data-status="pagado" class="selected">
+                        <td>
+                            <div class="tile" style="background-image: url({{achievement.imageLink}});">
+                                <div class="image-title"><h3>{{achievement.name}}</h3>
+                                    {{achievement.description}}
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+                </div>
+                </body>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

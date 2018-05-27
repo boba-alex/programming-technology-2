@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SITE</title>
+
+    <!-- importing the bootstrap styles -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- styles -->
+    <link rel="stylesheet"
+          href="app/styles/styles.css">
+    <!--styles for stars-->
+    <link rel="stylesheet"
+          href="app/styles/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+
+<body ng-app="JWTDemoApp">
+
+<!-- View for adding the navigation bar -->
+<div ui-view="nav"></div>
+
+
+<div class="container" style="margin-top: 50px;">
+    <!-- Main view for showing all views -->
+    <div ui-view="content"></div>
+
+</div>
+
+<!-- View for adding the footer bar -->
+<div ui-view="footer">
+    <footer class="panel-footer">
+        <div class="container">
+            <div class="text-center">SITE &copy; 2017
+                <a href="mailto:alexpol099099@gmail.com">Contact us</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Including Scripts -->
+<script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+
+<!-- Including jquery and twitter bootstrap -->
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Including the app.js and route.js  -->
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/route.js"></script>
+
+<!--Including angular-translate.min.js-->
+<script type="text/javascript" src="app/angular-translate.min.js"></script>
+
+<!--Including pdfmake.min.js && html2canvas.min.js -->
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+<!-- Including services -->
+<script type="text/javascript" src="app/services/auth-service.js"></script>
+
+<!-- Including controllers -->
+<script type="text/javascript" src="app/controllers/nav.js"></script>
+<script type="text/javascript" src="app/controllers/login.js"></script>
+<script type="text/javascript" src="app/controllers/users.js"></script>
+<script type="text/javascript" src="app/controllers/home.js"></script>
+<script type="text/javascript" src="app/controllers/page-not-found.js"></script>
+<script type="text/javascript" src="app/controllers/access-denied.js"></script>
+<script type="text/javascript" src="app/controllers/register.js"></script>
+<script type="text/javascript" src="app/controllers/profile.js"></script>
+<script type="text/javascript" src="app/controllers/create-catalog.js"></script>
+<script type="text/javascript" src="app/controllers/catalogs.js"></script>
+<script type="text/javascript" src="app/controllers/view-thread.js"></script>
+<script type="text/javascript" src="app/controllers/product.js"></script>
+<script type="text/javascript" src="app/controllers/view-profile.js"></script>
+<script type="text/javascript" src="app/translate.js"></script>
+<script type="text/javascript" src="app/rating.js"></script>
+<script type="text/javascript" src="app/pdf.js"></script>
+</body>
+</html>

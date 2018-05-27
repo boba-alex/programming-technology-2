@@ -1,0 +1,197 @@
+<div class="row" id="exportToPDFThis">
+    <div class="col-sm-14 ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                STEPS
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="initAddUser()">
+                    <span class="glyphicon glyphicon-plus"></span> New Step
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-info margin-top-5" ng-show="deleteMessage">{{deleteMessage}}</div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <h2>{{user.name}}</h2>
+                    <p><strong>Name: </strong> {{product.name}} </p>
+                    <p><strong>Id: </strong> {{product.id}} </p>
+                    <p><strong>Instruction id: </strong> {{product.instructionId}} </p>
+                    <p><strong>Submitted: </strong> {{ product.creationDate | date:'medium'}} </p>
+                    <p><strong>Last edit date: </strong> {{ product.lastEditDate | date:'medium'}} </p>
+                    <p><strong>Create by: </strong> {{product.creatorName}} </p>
+                    <h1>Blocks</h1>
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <form ng-submit="submit()" name="userForm" novalidate>
+                        <div class="form-group">
+                            <label for="name"></label> <label
+                                ng-model="product.creatorName=user.username"
+                                id="creatorName"
+                                name="name"></label>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': userForm.name.$invalid && userForm.name.$dirty }">
+                            <label for="name">Block :</label>
+                            <input type="text" required
+                                   class="form-control" ng-model="block.text"
+                                   id="name"
+                                   name="text">
+                        </div>
+
+                        <button type="submit" class="btn btn-default"
+                                ng-disabled="userForm.$invalid">{{buttonText}}
+                        </button>
+                        <div class="alert alert-info margin-top-5" ng-show="message">{{message}}</div>
+                    </form>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Creator</th>
+                        <th>Number of comments</th>
+                        <th>Text</th>
+                        <th>Type</th>
+                        <th>Submit</th>
+                        <th>Last edit date</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="block in product.productBlocks">
+                        <td>{{$index+1}}</td>
+                        <td>
+                            {{block.name}}
+                        </td>
+                        <td>{{block.creatorName}}</td>
+                        <td>{{block.stepComments.length}}</td>
+                        <td>{{block.text}}</td>
+                        <td>{{block.type}}</td>
+                        <td>{{ block.date | date:'medium'}}</td>
+                        <td>{{ block.lastEditDate | date:'medium'}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click="initEdit(catalog)">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click="deleteUser(block)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h1>Comments to product</h1>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Creator</th>
+                        <th>Text</th>
+                        <th>Posted on</th>
+                        <th>Last edit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="comment in product.stepComments">
+                        <td>{{comment.creatorName}}</td>
+                        <td>{{comment.text}}</td>
+                        <td>{{comment.creationDate  | date:'medium'}}</td>
+                        <td>{{comment.lastEditDate  | date:'medium'}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="container">
+                    <div class="row">
+                        <section class="content">
+                            <h1>Comments to product 2</h1>
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+
+                                        <div class="col-xs-12 col-sm-8">
+                                            <form ng-submit="submitComment()" name="commentForm" novalidate>
+                                                <div class="form-group">
+                                                    <label for="name"></label> <label
+                                                        ng-model="stepComment.creatorName=user.username"
+                                                        id="commentCreator"
+                                                        name="name">{{user.username}}</label>
+                                                </div>
+
+                                                <div class="form-group"
+                                                     ng-class="{ 'has-error': commentForm.name.$invalid && commentForm.name.$dirty }">
+                                                    <label for="name">Add a public comment...</label>
+                                                    <input type="text" required
+                                                           class="form-control" ng-model="stepComment.text"
+                                                           id="nameComment"
+                                                           name="name">
+                                                </div>
+
+                                                <button type="submitComment" class="btn btn-default"
+                                                        ng-disabled="commentForm.$invalid">Comment
+                                                </button>
+                                                <div class="alert alert-info margin-top-5" ng-show="message">{{message}}</div>
+                                            </form>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
+                                                <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
+                                                <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
+                                                <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+                                            </div>
+                                        </div>
+                                        <div class="table-container">
+                                            <table class="table table-filter">
+
+                                                <tr ng-repeat="comment in product.stepComments" data-status="pagado" class="selected">
+                                                    <td>
+                                                        <a href="javascript:;" class="star star-checked">
+                                                            <i class="glyphicon glyphicon-star"></i>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <div class="media">
+                                                            <a href="#" class="pull-left">
+                                                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <span class="media-meta pull-right">{{comment.lastEditDate | date:'medium'}}</span>
+                                                                <h4 class="title">
+                                                                    {{comment.creatorName}}
+                                                                    <span class="pull-right pagado">(Pagado)</span>
+                                                                </h4>
+                                                                <p class="summary">{{comment.text}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

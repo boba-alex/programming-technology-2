@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{'ADD_INSTRUCTION' | translate}}</div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <form ng-submit="submit()" name="userForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">{{'CREATOR' | translate}}:</label> <label
+                                                                   ng-model="catalog.creatorName=user.username"
+                                                                   id="creatorName"
+                                                                   name="name">{{user.username}}</label>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': userForm.name.$invalid && userForm.name.$dirty }">
+                            <label for="name">{{'NAME_OF_CATALOG' | translate}}:</label> <input type="text" required
+                                                                   class="form-control" ng-model="catalog.name"
+                                                                   id="name"
+                                                                   name="name">
+                        </div>
+                        <div class="form-group"
+                             ng-class="{ 'has-error': userForm.name.$invalid && userForm.name.$dirty }">
+                            <label for="name">{{'TAGS_OF_CATALOG' | translate}}:</label> <input type="text" required
+                                                                               class="form-control" ng-model="catalog.tags"
+                                                                               id="tags"
+                                                                               name="tags">
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': userForm.name.$invalid && userForm.name.$dirty }">
+                            <label for="name">{{'CATEGORY_OF_CATALOG' | translate}}:</label> <input type="text" required
+                                                                               class="form-control" ng-model="catalog.category"
+                                                                               id="category"
+                                                                               name="category">
+                        </div>
+
+                        <button type="submit" class="btn btn-default"
+                                ng-disabled="userForm.$invalid">{{buttonText | translate}}
+                        </button>
+                        <div class="alert alert-info margin-top-5" ng-show="message">{{message}}</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

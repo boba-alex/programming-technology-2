@@ -1,0 +1,54 @@
+<div class="row" id="exportToPDFThis">
+    <div class="col-sm-8 col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{'INSTRUCTIONS' | translate}}
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="initAddUser()">
+                    <span class="glyphicon glyphicon-plus"></span> {{'NEW_INSTRUCTION' | translate}}
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-info margin-top-5" ng-show="deleteMessage">{{deleteMessage}}</div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{'NAME_OF_INSTRUCTION' | translate}}</th>
+                        <th>{{'CREATOR' | translate}}</th>
+                        <th>{{'NUMBER_OF_STEPS' | translate}}</th>
+                        <th>{{'NUMBER_OF_COMMENTS' | translate}}</th>
+                        <th>{{'DATE_OF_CREATION' | translate}}</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="catalog in catalogs">
+                    <!--<tr ng-repeat="catalog in user.achievements">-->
+                        <td>{{$index+1}}</td>
+                        <td>
+                            <a href="#/view-thread/{{catalog.id}}">{{catalog.name}}</a>
+                        </td>
+                        <td>{{catalog.creatorName}}</td>
+                        <td>{{catalog.products.length}}</td>
+                        <td>{{catalog.instructionComments.length}}</td>
+                        <td>{{ catalog.creationDate | date:'medium'}}</td>
+                        <td><button type="button" class="btn btn-default btn-sm"
+                                    ng-click="initEdit(catalog)">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button></td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click="deleteUser(catalog)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
